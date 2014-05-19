@@ -10,21 +10,21 @@ $xpath = new DomXPath($dom);
 
 // step 1 - links:
 $aLinks = array();
-$vRes = $xpath->query(".//*[@id='top-stories']/div/h2/a[1]");
+$vRes = $xpath->query("//*[@id="mdk-berita-title-top"]");
 foreach ($vRes as $obj) {
     $aLinks[] = $obj->getAttribute('href');
 }
 
 // step 2 - titles:
 $aTitles = array();
-$vRes = $xpath->query(".//*[@id='top-stories']/div/h2/a[1]/span");
+$vRes = $xpath->query("//*[@id="mdk-berita-title-top"]");
 foreach ($vRes as $obj) {
     $aTitles[] = $obj->nodeValue;
 }
 
 // step 3 - descriptions:
 $aDescriptions = array();
-$vRes = $xpath->query(".//*[@id='top-stories']/div/div[@class='body']/div[1]");
+$vRes = $xpath->query("/html/body/center/div/div/div/div[4]/div[2]/div/ul/li/div/p");
 foreach ($vRes as $obj) {
     $aDescriptions[] = $obj->nodeValue;
 }
@@ -32,7 +32,7 @@ foreach ($vRes as $obj) {
 echo '<link href="css/styles.css" type="text/css" rel="stylesheet"/><div class="main">';
 echo '<h1>Using xpath for dom html</h1>';
 
-$entries = $xpath->evaluate('.//*[@id="headline-wrapper"]/div[1]/div/h2/span');
+$entries = $xpath->evaluate('/html/body/center/div/div/div/div[4]/div[2]/div/ul/li/div/p');
 echo '<h1>' . $entries->item(0)->nodeValue . ' google news</h1>';
 
 
