@@ -1,5 +1,5 @@
 <?php
-$sUrl = 'http://news.google.com/news/section?pz=1&cf=all&topic=t&ict=ln';
+$sUrl = 'http://www.merdeka.com/peristiwa/';
 $sUrlSrc = getWebsiteContent($sUrl);
 
 // Load the source
