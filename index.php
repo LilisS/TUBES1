@@ -1,5 +1,5 @@
 <?php
-$sUrl = 'http://www.merdeka.com/peristiwa/';
+$sUrl = 'http://www.tribunnews.com/regional';
 $sUrlSrc = getWebsiteContent($sUrl);
 
 // Load the source
@@ -10,21 +10,21 @@ $xpath = new DomXPath($dom);
 
 // step 1 - links:
 $aLinks = array();
-$vRes = $xpath->query("//*[@id="mdk-berita-title-top"]");
+$vRes = $xpath->query("/html/body/div[3]/div[5]/div/div[2]/div[2]/div/ul/li/div/div[3]/span/a");
 foreach ($vRes as $obj) {
     $aLinks[] = $obj->getAttribute('href');
 }
 
 // step 2 - titles:
 $aTitles = array();
-$vRes = $xpath->query("//*[@id="mdk-berita-title-top"]");
+$vRes = $xpath->query("/html/body/div[3]/div[5]/div/div[2]/div[2]/div/ul/li/div/div/a");
 foreach ($vRes as $obj) {
     $aTitles[] = $obj->nodeValue;
 }
 
 // step 3 - descriptions:
 $aDescriptions = array();
-$vRes = $xpath->query("/html/body/center/div/div/div/div[4]/div[2]/div/ul/li/div/p");
+$vRes = $xpath->query("/html/body/div[3]/div[5]/div/div[2]/div[2]/div/ul/li/div/div[2]");
 foreach ($vRes as $obj) {
     $aDescriptions[] = $obj->nodeValue;
 }
@@ -32,7 +32,7 @@ foreach ($vRes as $obj) {
 echo '<link href="css/styles.css" type="text/css" rel="stylesheet"/><div class="main">';
 echo '<h1>Using xpath for dom html</h1>';
 
-$entries = $xpath->evaluate('/html/body/center/div/div/div/div[4]/div[2]/div/ul/li/div/p');
+$entries = $xpath->evaluate('/html/body/div[3]/div[5]/div/div[2]/div[2]/div/ul/li/div/div/a');
 echo '<h1>' . $entries->item(0)->nodeValue . ' google news</h1>';
 
 
